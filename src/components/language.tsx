@@ -4,6 +4,7 @@ import { JSLogo } from "@/svg/jslogo";
 import { TailwindSvg } from "@/svg/tailwindcss";
 import { TsSvg } from "@/svg/typescript";
 
+
 const Modal = ({ isOpen, onClose, language }) => {
     if (!isOpen) return null;
 
