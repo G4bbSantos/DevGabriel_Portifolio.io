@@ -4,11 +4,23 @@ import { JSLogo } from "@/svg/jslogo";
 import { TailwindSvg } from "@/svg/tailwindcss";
 import { TsSvg } from "@/svg/typescript";
 
+type LanguageDetails = {
+    [key: string]: {
+        description: string;
+        certificate: string;
+    };
+};
 
-const Modal = ({ isOpen, onClose, language }) => {
+interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    language: string;
+}
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, language }) => {
     if (!isOpen) return null;
 
-    const details = {
+    const details: LanguageDetails = {
         "HTML & CSS": {
             description: "Desenvolvimento de layouts responsivos, uso de semântica HTML e estilos avançados com CSS.",
             certificate: "/path/to/certificado_HtmlECss.jpg",
@@ -35,7 +47,10 @@ const Modal = ({ isOpen, onClose, language }) => {
         },
     };
 
-    const { description, certificate } = details[language];
+    const languageDetails = details[language];
+    if (!languageDetails) return null;
+
+    const { description, certificate } = languageDetails;
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -44,7 +59,7 @@ const Modal = ({ isOpen, onClose, language }) => {
                 <p className="text-sm mb-4">{description}</p>
                 <img
                     src={certificate}
-                    alt={`Sem certificado de curso para ${language}`}
+                    alt={`Certificado de curso para ${language}`}
                     className="w-full h-auto rounded-md mb-4"
                 />
                 <button
@@ -58,11 +73,11 @@ const Modal = ({ isOpen, onClose, language }) => {
     );
 };
 
-export const Language = () => {
+export const Language: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState("");
+    const [selectedLanguage, setSelectedLanguage] = useState<string>("");
 
-    const handleOpenModal = (language) => {
+    const handleOpenModal = (language: string) => {
         setSelectedLanguage(language);
         setIsModalOpen(true);
     };
