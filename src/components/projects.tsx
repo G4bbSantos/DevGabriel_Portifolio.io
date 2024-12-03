@@ -48,8 +48,8 @@ export const Projects = () => {
             <div className="w-full grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-4 rounded-xl border border-zinc-900 shadow-xl">
                 <ProjectCard 
                     altText="Imagem do projeto em andamento 1" 
-                    name="Em andamento" 
-                    language="Indefinido"
+                    name="Tabela Fipe" 
+                    language="ReactJs com Next"
                     description="O projeto está sendo feito no momento"
                     onHover={handleHover}
                     linkRep=""
