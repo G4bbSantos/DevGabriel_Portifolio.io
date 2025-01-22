@@ -50,10 +50,12 @@ export const Projects = () => {
                     altText="Imagem do projeto em andamento 1" 
                     name="Tabela Fipe" 
                     language="ReactJs com Next"
-                    description="O projeto está sendo feito no momento"
+                    description="O projeto foi feito usando uma api de tabela fipe. No projeto, vc pode escolher o tipo de veiculo,
+                     marca, modelo e ano e ver sobre o veiculo que deseja de forma simples e facil"
                     onHover={handleHover}
-                    linkRep=""
-                    linkPage=""
+                    linkRep="https://github.com/G4bbSantos/TabelaFipe_Project.io"
+                    linkPage="https://tabela-fipe-project-two.vercel.app/"
+                    imageSrc="/path/to/TabelaFipe1.png"
                 />
                 <ProjectCard 
                     altText="Imagem do projeto em andamento 2" 
