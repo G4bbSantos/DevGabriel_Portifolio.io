@@ -1,38 +1,53 @@
-import React from "react";
+"use client";
+import { motion } from "framer-motion";
 
 export const Start = () => {
     return (
-        <section
-            id="start-section"
-            className="min-h-screen flex flex-col justify-center items-center pt-20 bg-neutral-300 dark:bg-neutral-800"
-        >
-            <div className="text-center">
-                <h1 className="text-2xl font-semibold sm:text-5xl sm:font-extrabold typing-effect">
-                    Olá, sou Gabriel Fernando
-                </h1>
-                <h2 className="text-xl font-medium sm:text-3xl sm:font-semibold">
-                    Desenvolvedor front-end
+        <section id="start-section" className="min-h-screen flex flex-col justify-center items-center pt-20 overflow-hidden bg-gradient-to-r from-indigo-800 to-sky-600">
+            <div className="relative w-full flex flex-col items-center">
+                {/* H2 acima do título animado */}
+                <h2 className="text-lg font-medium sm:text-2xl sm:font-semibold mb-4">
+                    Olá
+                </h2>
+
+                {/* Div que ocupa toda a largura e contém o título animado */}
+                <div className="relative w-8/12 min-h-14 overflow-hidden">
+                    <motion.h1
+                        className="text-2xl font-semibold sm:text-5xl sm:font-extrabold whitespace-nowrap absolute"
+                        initial={{ x: "-100%" }} // Agora começa fora da tela à direita
+                        animate={{ x: "200%" }} // Move para a esquerda até sumir
+                        transition={{
+                            repeat: Infinity,
+                            duration: 8,
+                            ease: "linear"
+                        }}
+                    >
+                        Gabriel Fernando dos Santos
+                    </motion.h1>
+                </div>
+
+                {/* H2 abaixo do título animado */}
+                <h2 className="text-lg font-medium sm:text-2xl sm:font-semibold mt-4">
+                    {`<Desenvolvedor Front-end/>`}
                 </h2>
             </div>
-            <div className="flex justify-center items-center gap-4 mt-3">
+
+            {/* Botões */}
+            <div className="flex justify-center items-center gap-8 mt-6">
                 <a
-                    href="https://www.linkedin.com/in/gabriel-fernando-dos-santos-b1aab32b5/"
-                    className="cursor-pointer hover:bg-zinc-900 text-lg font-medium px-5 py-1 bg-zinc-600 rounded-lg text-slate-300"
+                    href="https://www.linkedin.com/in/gabriel-fernado-santos-805678351/"
+                    className="bg-white relative cursor-pointer text-lg font-medium px-6 py-2 rounded-lg border border-black overflow-hidden text-blue-500 transition-colors duration-300  before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:bg-indigo-800 before:z-0 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 hover:text-white"
                 >
-                    Linkedin
+                    <span className="relative z-10">Linkedin</span>
                 </a>
-                <a
-                    href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJTNqrgFPQQsnsvqwPxGzMbBmKDWnpJFpPKnWJNMnLFjTcxSQzvGrRPlRdqwjRQlPqHvqbB"
-                    className="cursor-pointer hover:bg-zinc-900 text-lg font-medium px-5 py-1 bg-zinc-600 rounded-lg text-slate-300"
-                >
-                    Email
-                </a>
+
                 <a
                     href="https://github.com/G4bbSantos"
-                    className="cursor-pointer hover:bg-zinc-900 text-lg font-medium px-5 py-1 bg-zinc-600 rounded-lg text-slate-300"
+                    className="bg-white relative cursor-pointer text-lg font-medium px-6 py-2 rounded-lg border border-black overflow-hidden text-blue-500 transition-colors duration-300 before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:bg-indigo-800 before:z-0 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 hover:text-white"
                 >
-                    Github
+                    <span className="relative z-10">Github</span>
                 </a>
+
             </div>
         </section>
     );
