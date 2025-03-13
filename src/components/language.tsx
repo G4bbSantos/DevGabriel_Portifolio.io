@@ -1,157 +1,117 @@
-import React, { useState } from "react";
+import React from "react";
+// Importação dos ícones SVG para as tecnologias
 import { GitSvg } from "@/svg/Git_Logo";
 import { JSLogo } from "@/svg/jslogo";
 import { TailwindSvg } from "@/svg/tailwindcss";
 import { TsSvg } from "@/svg/typescript";
 
-type LanguageDetails = {
-    [key: string]: {
-        description: string;
-        certificate: string;
-    };
-};
-
-interface ModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    language: string;
-}
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, language }) => {
-    if (!isOpen) return null;
-
-    const details: LanguageDetails = {
-        "HTML & CSS": {
-            description: "Desenvolvimento de layouts responsivos, uso de semântica HTML e estilos avançados com CSS.",
-            certificate: "/path/to/certificado_HtmlECss.jpg",
-        },
-        JavaScript: {
-            description: "Desenvolvimento de aplicações dinâmicas, manipulação de DOM e uso de ES6+.",
-            certificate: "/path/to/certificado_javascript.jpg",
-        },
-        Git: {
-            description: "Controle de versão, criação de branches e colaboração em equipes.",
-            certificate: "/path/to/certificado_git.jpg",
-        },
-        "Tailwind CSS": {
-            description: "Criação de interfaces modernas utilizando classes utilitárias.",
-            certificate: "/path/to/certificado_tailwind.jpg",
-        },
-        TypeScript: {
-            description: "Desenvolvimento com tipagem estática, interfaces e sistemas robustos.",
-            certificate: "/path/to/certificado_typescript.jpg",
-        },
-        ReactJS: {
-            description: "Criação de SPAs, gerenciamento de estado e componentização.",
-            certificate: "/path/to/certificado_reactjs.jpg",
-        },
-    };
-
-    const languageDetails = details[language];
-    if (!languageDetails) return null;
-
-    const { description, certificate } = languageDetails;
-
-    return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-zinc-300 dark:bg-zinc-700 p-6 rounded-lg shadow-lg max-w-md w-full">
-                <h2 className="text-xl font-bold mb-4 text-center">{language}</h2>
-                <p className="text-sm mb-4">{description}</p>
-                <img
-                    src={certificate}
-                    alt={`Certificado de curso para ${language}`}
-                    className="w-full h-auto rounded-md mb-4"
-                />
-                <button
-                    onClick={onClose}
-                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-                >
-                    Fechar
-                </button>
-            </div>
-        </div>
-    );
-};
-
+// Componente principal "Language", que exibe as habilidades em um layout de grade
 export const Language: React.FC = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState<string>("");
-
-    const handleOpenModal = (language: string) => {
-        setSelectedLanguage(language);
-        setIsModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-        setSelectedLanguage("");
-    };
-
     return (
         <section
             id="language-section"
-            className="pt-12 flex justify-center items-center flex-col px-4 sm:px-5 md:px-8 lg:px-12 min-h-screen bg-neutral-300 dark:bg-neutral-800"
+            className="pt-12 flex justify-between items-center flex-col px-4 sm:px-5 md:px-8 lg:px-12 min-h-screen"
         >
-            <h1 className="mb-8 font-bold text-xl sm:text-2xl xl:text-4xl">HABILIDADES</h1>
+            {/* Título da seção */}
+            <h1 className="mb-8 font-bold text-xl sm:text-2xl xl:text-4xl text-indigo-800">HABILIDADES</h1>
 
-            <div className="w-full grid grid-cols-2 gap-6 p-4 rounded-xl border border-zinc-900 shadow-xl sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-                <div
-                    className="flex items-center flex-col cursor-pointer hover:shadow-lg hover:underline"
-                    onClick={() => handleOpenModal("HTML & CSS")}
-                >
-                    <img
-                        src="/path/to/HTML_e_css.png"
-                        alt="Logo HTML e CSS"
-                        className="w-18 h-16 xl:w-32 xl:h-24"
-                    />
-                    <div className="font-light mt-2">HTML & CSS</div>
+            {/* Layout de grid para as habilidades */}
+            <div className="lg:w-full grid grid-cols-1 gap-6 p-4 rounded-xl sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+                {/* Exemplo de card de habilidade */}
+                <div className="w-60 h-60 flex bg-yellow-400 justify-between items-center flex-col hover:border border-gray-600 shadow-lg shadow-gray-500">
+                    <div className="w-full flex justify-end -mb-10">
+                        <div className="w-14 h-10 bg-white rounded-es-lg flex items-center justify-center">
+                            <img src="/path/to/mais.svg" alt="" className="w-8" />
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col items-center justify-center">
+                        <img
+                            src="/path/to/HTML_e_css.png"
+                            alt="Logo HTML e CSS"
+                            className="w-18 h-16 xl:w-32 xl:h-24"
+                        />
+                        <div className="font-light mt-2 text-indigo-800">HTML & CSS</div>
+                    </div>
+                    <div></div> {/* Div vazia preservando a estrutura */}
                 </div>
-                <div
-                    className="flex items-center flex-col cursor-pointer hover:shadow-lg hover:underline"
-                    onClick={() => handleOpenModal("JavaScript")}
-                >
-                    <JSLogo />
-                    <div className="font-light mt-2">JavaScript</div>
+
+                {/* Repetindo o mesmo padrão de card para outras habilidades */}
+                <div className="w-60 h-60 flex bg-yellow-400 justify-between items-center flex-col hover:border border-gray-600 shadow-lg shadow-gray-500">
+                    <div className="w-full flex justify-end -mb-10">
+                        <div className="w-14 h-10 bg-white rounded-es-lg flex items-center justify-center">
+                            <img src="/path/to/mais.svg" alt="" className="w-8" />
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col items-center justify-center">
+                        <JSLogo />
+                        <div className="font-light mt-2 text-indigo-800">JavaScript</div>
+                    </div>
+                    <div></div> {/* Div vazia preservando a estrutura */}
                 </div>
-                <div
-                    className="flex items-center flex-col cursor-pointer hover:shadow-lg hover:underline"
-                    onClick={() => handleOpenModal("Git")}
-                >
-                    <GitSvg />
-                    <div className="font-light mt-2">Git</div>
+
+                {/* Cards para outras habilidades */}
+                <div className="w-60 h-60 flex bg-yellow-400 justify-between items-center flex-col hover:border border-gray-600 shadow-lg shadow-gray-500">
+                    <div className="w-full flex justify-end -mb-10">
+                        <div className="w-14 h-10 bg-white rounded-es-lg flex items-center justify-center">
+                            <img src="/path/to/mais.svg" alt="" className="w-8" />
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col items-center justify-center">
+                        <GitSvg />
+                        <div className="font-light mt-2 text-indigo-800">Git</div>
+                    </div>
+                    <div></div> {/* Div vazia preservando a estrutura */}
                 </div>
-                <div
-                    className="flex items-center flex-col cursor-pointer hover:shadow-lg hover:underline"
-                    onClick={() => handleOpenModal("Tailwind CSS")}
-                >
-                    <TailwindSvg />
-                    <div className="font-light mt-2">Tailwind CSS</div>
+
+                {/* Continuar a mesma estrutura para outras habilidades como Tailwind, TypeScript, ReactJS */}
+                <div className="w-60 h-60 flex bg-yellow-400 justify-between items-center flex-col hover:border border-gray-600 shadow-lg shadow-gray-500">
+                    <div className="w-full flex justify-end -mb-10">
+                        <div className="w-14 h-10 bg-white rounded-es-lg flex items-center justify-center">
+                            <img src="/path/to/mais.svg" alt="" className="w-8" />
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col items-center justify-center">
+                        <TailwindSvg />
+                        <div className="font-light mt-2 text-indigo-800">Tailwind CSS</div>
+                    </div>
+                    <div></div> {/* Div vazia preservando a estrutura */}
                 </div>
-                <div
-                    className="flex items-center flex-col cursor-pointer hover:shadow-lg hover:underline"
-                    onClick={() => handleOpenModal("TypeScript")}
-                >
-                    <TsSvg />
-                    <div className="font-light mt-2">TypeScript</div>
+
+                <div className="w-60 h-60 flex bg-yellow-400 justify-between items-center flex-col hover:border border-gray-600 shadow-lg shadow-gray-500">
+                    <div className="w-full flex justify-end -mb-10">
+                        <div className="w-14 h-10 bg-white rounded-es-lg flex items-center justify-center">
+                            <img src="/path/to/mais.svg" alt="" className="w-8" />
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col items-center justify-center">
+                        <TsSvg />
+                        <div className="font-light mt-2 text-indigo-800">TypeScript</div>
+                    </div>
+                    <div></div> {/* Div vazia preservando a estrutura */}
                 </div>
-                <div
-                    className="flex items-center flex-col cursor-pointer hover:shadow-lg hover:underline"
-                    onClick={() => handleOpenModal("ReactJS")}
-                >
-                    <img
-                        src="/path/to/ReactJs.png"
-                        alt="Logo ReactJS"
-                        className="w-16 h-16 xl:w-24 xl:h-24"
-                    />
-                    <div className="font-light mt-2">ReactJS</div>
+
+                <div className="w-60 h-60 flex bg-yellow-400 justify-between items-center flex-col hover:border border-gray-600 shadow-lg shadow-gray-500">
+                    <div className="w-full flex justify-end -mb-10">
+                        <div className="w-14 h-10 bg-white rounded-es-lg flex items-center justify-center">
+                            <img src="/path/to/mais.svg" alt="" className="w-8" />
+                        </div>
+                    </div>
+                    <div className="w-full flex flex-col items-center justify-center">
+                        <img
+                            src="/path/to/ReactJs.png"
+                            alt="Logo ReactJS"
+                            className="w-16 h-16 xl:w-24 xl:h-24"
+                        />
+                        <div className="font-light mt-2 text-indigo-800">ReactJS</div>
+                    </div>
+                    <div>
+                    
+                    </div> {/* Div vazia preservando a estrutura */}
                 </div>
             </div>
-
-            <Modal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                language={selectedLanguage}
-            />
+            <div>
+                
+            </div>
         </section>
     );
 };
