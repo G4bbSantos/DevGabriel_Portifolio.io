@@ -60,9 +60,9 @@ export const Projects = () => {
             <div className="lg:w-full">
                 <div className="w-full grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 p-4 rounded-xl">
                     <ProjectCard 
-                        altText="Imagem do projeto em andamento 1" 
+                        altText="Imagem do projeto mostrando a estrutura e um pouco do site" 
                         name="Tabela Fipe" 
-                        language="ReactJs com Next"
+                        language="ReactJs com Next, tailwind Css"
                         description="O projeto foi feito usando uma api de tabela fipe. No projeto, vc pode escolher o tipo de veiculo,
                         marca, modelo e ano e ver sobre o veiculo que deseja de forma simples e facil"
                         onHover={handleHover}
